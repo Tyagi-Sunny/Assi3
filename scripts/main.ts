@@ -109,7 +109,6 @@ class userDataTable implements CRUD {
   deleteRow(rowNum: any): void {
     this.data = [...this.data.slice(0, rowNum - 1), ...this.data.slice(rowNum)];
     this.refreshData();
-    console.log("data", this.data);
   }
 
   editRow(rowNum): void {
@@ -120,7 +119,6 @@ class userDataTable implements CRUD {
     let staticCellData = document.getElementsByClassName(
       `info-row-${rowNum}`
     ) as HTMLCollectionOf<HTMLElement>;
-    console.log(typeof editableRowInput);
     Array.from(editableRowInput).forEach((input) => {
       input.style.display = "inline";
     });
@@ -142,8 +140,6 @@ class userDataTable implements CRUD {
         : (this.data[rowNum - 1][input.name] = value);
     });
 
-    console.log("row", rowNum);
-    console.log("after save", this.data);
     this.refreshData();
   }
 
@@ -155,7 +151,6 @@ class userDataTable implements CRUD {
     let staticCellData = document.getElementsByClassName(
       `info-row-${rowNum}`
     ) as HTMLCollectionOf<HTMLElement>;
-    console.log(typeof editableRowInput);
     Array.from(editableRowInput).forEach((input) => {
       input.style.display = "none";
     });
@@ -178,4 +173,3 @@ class userDataTable implements CRUD {
 }
 
 let obj = new userDataTable(data);
-// console.log(obj.data[0]);

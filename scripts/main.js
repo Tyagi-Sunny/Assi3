@@ -87,12 +87,10 @@ class userDataTable {
     deleteRow(rowNum) {
         this.data = [...this.data.slice(0, rowNum - 1), ...this.data.slice(rowNum)];
         this.refreshData();
-        console.log("data", this.data);
     }
     editRow(rowNum) {
         let editableRowInput = document.getElementsByClassName(`edit-info-row-${rowNum}`);
         let staticCellData = document.getElementsByClassName(`info-row-${rowNum}`);
-        console.log(typeof editableRowInput);
         Array.from(editableRowInput).forEach((input) => {
             input.style.display = "inline";
         });
@@ -110,14 +108,11 @@ class userDataTable {
                 ? (this.data[rowNum - 1][input.name] = role[value])
                 : (this.data[rowNum - 1][input.name] = value);
         });
-        console.log("row", rowNum);
-        console.log("after save", this.data);
         this.refreshData();
     }
     cancel(rowNum) {
         let editableRowInput = document.getElementsByClassName(`edit-info-row-${rowNum}`);
         let staticCellData = document.getElementsByClassName(`info-row-${rowNum}`);
-        console.log(typeof editableRowInput);
         Array.from(editableRowInput).forEach((input) => {
             input.style.display = "none";
         });
@@ -136,4 +131,3 @@ class userDataTable {
     }
 }
 let obj = new userDataTable(data);
-// console.log(obj.data[0]);
